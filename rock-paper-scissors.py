@@ -23,6 +23,11 @@ def draw( pv, cv ) :
 	print "It's a draw!"
 	return False
 
+def do_over() :
+	choices = choice()
+	pv = choices[0]
+	cv = choices[1]
+
 choices = choice()
 pv = choices[0]
 cv = choices[1]
@@ -41,3 +46,5 @@ elif pv == 3 and cv == 1 :
 	print "Spiller vinder"
 else :
 	print "Computeren vinder..."
+
+do_over()
