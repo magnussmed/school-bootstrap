@@ -14,7 +14,7 @@ wn.tracer(0)
 score_a = 0
 score_b = 0
 
-# Paddle A
+# Paddle A TEST
 paddle_a = turtle.Turtle()
 paddle_a.speed(0)
 paddle_a.shape("square")
@@ -55,22 +55,22 @@ pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "norm
 # Functions
 def paddle_a_up():
 	y = paddle_a.ycor()
-	y += 10
+	y += 30
 	paddle_a.sety(y)
 
 def paddle_a_down():
 	y = paddle_a.ycor()
-	y -= 10
+	y -= 30
 	paddle_a.sety(y)
 
 def paddle_b_up():
 	y = paddle_b.ycor()
-	y += 10
+	y += 30
 	paddle_b.sety(y)
 
 def paddle_b_down():
 	y = paddle_b.ycor()
-	y -= 10
+	y -= 30
 	paddle_b.sety(y)
 
 # Keyboard bindings
