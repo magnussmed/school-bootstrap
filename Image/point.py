@@ -16,7 +16,7 @@ class Point( object ) :
 
 		for x in range( 0, width ) :
 			for y in range( 0, height ) :
-				print(self.photo.getpixel([ x, y ]))
+				r, g, b = self.photo.getpixel(( x, y ))
 				average = int( sum([r, g, b]) / 3 )
 				if average < 50 :
 					print(r,g,b)
