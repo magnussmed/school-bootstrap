@@ -1,5 +1,5 @@
 from PIL import Image
-import multiprocessing as mp
+from multiprocessing import Process
 import os
 
 class Point( object ) :
@@ -7,8 +7,10 @@ class Point( object ) :
 		self.photo = Image.open( "assets/img/3.jpg" )
 		self.width, self.height = self.photo.size
 
-		mp.Process( target = self.bottom_middle ).start()
-		mp.Process( target = self.middle_top ).start()
+		p1 = Process( target = self.middle_top )
+		p2 = Process( target = self.bottom_middle )
+		p1.start()
+		p2.start()
 
 	def bottom_middle( self ) :
 		width = int( self.width )
@@ -22,8 +24,8 @@ class Point( object ) :
 					print(r,g,b)
 					print(x,y)
 					break
-				print( "Bottom-middle average: {} ({},{},{})".format(average, r, g, b) )
-				print( "Bottom-middle: {}, {}".format(x, y) )
+				#print( "Bottom-middle average: {} ({},{},{})".format(average, r, g, b) )
+				#print( "Bottom-middle: {}, {}".format(x, y) )
 			else :
 				continue
 			break
