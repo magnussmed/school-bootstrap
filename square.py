@@ -10,18 +10,18 @@ def draw_square():
 
 	brad = turtle.Turtle()
 	brad.forward(100)  # forward takes a number which is the distance to move
-	brad.right(90)  # turn right
+	brad.right(120)  # turn right
 	brad.forward(100)
-	brad.right(90)
+	brad.right(120)
 	brad.forward(100)
-	brad.right(90)
-	brad.forward(100)
-	brad.right(90)
+	brad.right(120)
+	# brad.forward(100)
+	# brad.right(90)
 
 window = turtle.Screen()
 # this is the background where the turtle will move
 window.bgcolor("red") # the color of the window
 
-draw_square()
+raw_square()
 
 window.exitonclick()  # click the screen to close it
