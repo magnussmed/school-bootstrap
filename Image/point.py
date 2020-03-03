@@ -9,7 +9,7 @@ import os
 class Point( object ) :
 	def __init__( self ) :
 		# Set image
-		self.image_id = '2'
+		self.image_id = '1'
 		self.path = 'assets/img/' + self.image_id + '.jpg'
 		self.photo = Image.open( self.path )
 		self.width, self.height = self.photo.size
@@ -22,8 +22,8 @@ class Point( object ) :
 
 		self.points = []
 
-		# Set confidence percentage
-		self.conf = 0.20
+		# Set sentiment percentage
+		self.senti = 0.50
 
 		# Start middle to top and bottom to middle simultaneously
 		p1Q = mp.Queue()
@@ -37,7 +37,6 @@ class Point( object ) :
 
 		# Add both queries points (x, y)
 		self.points = p1Q.get() + p2Q.get()
-
 		self.draw_points( self.points )
 
 
@@ -48,7 +47,6 @@ class Point( object ) :
 	def average( self ) :
 		colors = []
 		average = 0
-		counter = []
 		for c in self.photo.getdata() :
 			average = int(sum( list(c) ) / 3)
 			colors.append(average)
@@ -63,11 +61,11 @@ class Point( object ) :
 	# Return save image and open it
 	def draw_points( self, points ) :
 		for x, y in points :
-			cv2.drawMarker( self.pointed_image, (x, y), (132,255,0), markerType = cv2.MARKER_STAR, markerSize = 2, thickness=1, line_type = cv2.LINE_AA )
-		cv2.imwrite( 'assets/img/' + self.image_id + '-point.jpg', self.pointed_image )
+			cv2.drawMarker( self.pointed_image, (x, y), (132,255,0), markerType = cv2.MARKER_STAR, markerSize = 1, thickness=2, line_type = cv2.LINE_AA )
+		cv2.imwrite( 'assets/draw/' + self.image_id + '-point.jpg', self.pointed_image )
 
 		cv2.imshow( 'image', self.pointed_image )
-		cv2.waitKey(0)
+		cv2.waitKey( 0 )
 
 	# From the bottom to the middle
 	# For each pixel from the bottom of the image to the middle
@@ -85,21 +83,16 @@ class Point( object ) :
 				r, g, b = self.photo.getpixel(( x, y ))
 				average = int( sum([r, g, b]) / 3 )
 
-				# Break if the current average color is above image average * confience percentage
-				# or if it is under image average * confience percentage
-				if int( self.average + (self.conf * self.average) ) > average < int( self.average - (self.conf * self.average) ) :
-					print("Point found: x: {}, y: {} {}".format(x,y,(r,g,b)))
-					self.points.append((x,y))
-					#break
-
-				# Uncomment below if you like
-				# print( "Bottom-middle average: {} ({},{},{})".format(average, r, g, b) )
-				# print( "Bottom-middle: {}, {}".format(x, y) )
+				# Break if the current average color is above image average * sentiment percentage
+				# or if it is under image average * sentiment percentage
+				if int( self.average + (self.senti * self.average) ) > average < int( self.average - (self.senti * self.average) ) :
+					print( "Point found: x: {}, y: {} {}".format( x,y,(r,g,b)) )
+					self.points.append( ( x, y ) )
 			else :
 				continue
 			break
 
-		q.put(self.points)
+		q.put( self.points )
 
 	# From the middle to the top
 	# For each pixel from the bottom of the image to the middle
@@ -117,21 +110,16 @@ class Point( object ) :
 				r, g, b = self.photo.getpixel(( x, y ))
 				average = int( sum([r, g, b]) / 3 )
 
-				# Break if the current average color is above image average * confience percentage
-				# or if it is under image average * confience percentage
-				if int( self.average + (self.conf * self.average) ) > average < int( self.average - (self.conf * self.average) ) :
-					print("Point found: x: {}, y: {} {}".format(x,y,(r,g,b)))
-					self.points.append((x,y))
-					#break
-
-				# Uncomment below if you like
-				# print( "Middle-top average: {} ({},{},{})".format(average, r, g, b) )
-				# print( "Middle-top: {}, {}".format(x, y) )
+				# Break if the current average color is above image average * sentiment percentage
+				# or if it is under image average * sentiment percentage
+				if int( self.average + (self.senti * self.average) ) > average < int( self.average - (self.senti * self.average) ) :
+					print( "Point found: x: {}, y: {} {}".format( x,y,(r,g,b)) )
+					self.points.append( ( x, y ) )
 			else :
 				continue
 			break
 
-		q.put(self.points)
+		q.put( self.points )
 
 if __name__ == '__main__' :
 	point = Point()
