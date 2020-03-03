@@ -17,17 +17,11 @@ class Point( object ) :
 		self.conf = 0.25
 
 		# Start middle to top and bottom to middle simultaneously
-		self.p1 = mp.Process( target = self.middle_top ).start()
-		self.p2 = mp.Process( target = self.bottom_middle ).start()
-	#	p1.start()
-	#	p2.start()
+		self.p1 = mp.Process( target = self.middle_top )
+		self.p2 = mp.Process( target = self.bottom_middle )
 
-
-	def terminate( self, who ) :
-		if who == 'p1' :
-			self.p1.mp.terminate()
-		else :
-			self.p2.mp.terminate()
+		self.p1.start()
+		self.p2.start()
 
 	# Get average color from image
 	# For each pixel get the RGB colorset and get average value afterwards
@@ -41,6 +35,8 @@ class Point( object ) :
 		for c in self.photo.getdata() :
 			average = int(sum( list(c) ) / 3)
 			colors.append(average)
+
+		print("Got color-average now! {}".format( average ))
 
 		return round(sum(colors) / len(colors))
 
@@ -65,7 +61,7 @@ class Point( object ) :
 				if int( self.average + (self.conf * self.average) ) > average < int( self.average - (self.conf * self.average) ) :
 					print(r,g,b)
 					print("x: {}, y: {}".format(x,y))
-					self.terminate( 'p1' )
+					#self.p1.terminate()
 					break
 
 				# Uncomment below if you like
@@ -96,7 +92,7 @@ class Point( object ) :
 				if int( self.average + (self.conf * self.average) ) > average < int( self.average - (self.conf * self.average) ) :
 					print(r,g,b)
 					print("x: {}, y: {}".format(x,y))
-					self.terminate( 'p2' )
+					#self.p2.terminate()
 					break
 
 				# Uncomment below if you like
@@ -105,7 +101,6 @@ class Point( object ) :
 			else :
 				continue
 			break
-
 
 if __name__ == '__main__' :
 	point = Point()
