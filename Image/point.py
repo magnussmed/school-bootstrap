@@ -23,7 +23,7 @@ class Point( object ) :
 		self.points = []
 
 		# Set confidence percentage
-		self.conf = 0.50
+		self.conf = 0.20
 
 		# Start middle to top and bottom to middle simultaneously
 		p1Q = mp.Queue()
