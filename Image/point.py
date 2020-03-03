@@ -7,7 +7,7 @@ import os
 class Point( object ) :
 	def __init__( self ) :
 		# Set image
-		self.photo = Image.open( "assets/img/8.jpg" )
+		self.photo = Image.open( "assets/img/1.jpg" )
 		self.width, self.height = self.photo.size
 
 		# Photo average color
