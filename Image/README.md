@@ -12,3 +12,11 @@ pip install pillow
 pip install opencv-python
 pip install opencv-python-headless
 ```
+
+Run the script in your terminal:
+```bash
+python ./point.py
+```
+After a few seconds depending on image size, a drawed image will popup as result
+
+You can find test images in assets/img folder. You are more than welcome to add more images!
