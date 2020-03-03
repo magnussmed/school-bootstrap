@@ -7,14 +7,14 @@ import os
 class Point( object ) :
 	def __init__( self ) :
 		# Set image
-		self.photo = Image.open( "assets/img/1.jpg" )
+		self.photo = Image.open( "assets/img/6.jpg" )
 		self.width, self.height = self.photo.size
 
 		# Photo average color
 		self.average = self.average()
 
 		# Set confidence percentage
-		self.conf = 0.25
+		self.conf = 0.50
 
 		# Start middle to top and bottom to middle simultaneously
 		self.p1 = mp.Process( target = self.middle_top )
