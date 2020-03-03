@@ -7,7 +7,7 @@ import os
 class Point( object ) :
 	def __init__( self ) :
 		# Set image
-		self.photo = Image.open( "assets/img/9.jpg" )
+		self.photo = Image.open( "assets/img/8.jpg" )
 		self.width, self.height = self.photo.size
 
 		# Photo average color
@@ -59,10 +59,9 @@ class Point( object ) :
 				# Break if the current average color is above image average * confience percentage
 				# or if it is under image average * confience percentage
 				if int( self.average + (self.conf * self.average) ) > average < int( self.average - (self.conf * self.average) ) :
-					print(r,g,b)
-					print("x: {}, y: {}".format(x,y))
+					print("Point found: x: {}, y: {} {}".format(x,y,(r,g,b)))
 					#self.p1.terminate()
-					break
+					#break
 
 				# Uncomment below if you like
 				# print( "Bottom-middle average: {} ({},{},{})".format(average, r, g, b) )
@@ -90,10 +89,9 @@ class Point( object ) :
 				# Break if the current average color is above image average * confience percentage
 				# or if it is under image average * confience percentage
 				if int( self.average + (self.conf * self.average) ) > average < int( self.average - (self.conf * self.average) ) :
-					print(r,g,b)
-					print("x: {}, y: {}".format(x,y))
+					print("Point found: x: {}, y: {} {}".format(x,y,(r,g,b)))
 					#self.p2.terminate()
-					break
+					#break
 
 				# Uncomment below if you like
 				# print( "Middle-top average: {} ({},{},{})".format(average, r, g, b) )
