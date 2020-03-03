@@ -1,12 +1,11 @@
 # Point
-Small python script that detects colors on a photo.
-The script will draw lime-green pointers displayed where it has detected colored pixels. See down below for usage information!
+Small python script that detects colors on a photo.<br>
+The script will draw lime-green pointers displayed where it has detected colored pixels.<br>See down below for usage information!
 
 ## Installation and usage
-Project is written in python 3.7
-`pip` for python dependency management:
+Project is written in python 3.7 and using `pip` for python dependency management.
 
-Install all required runtime dependencies
+Install all required runtime dependencies with following commands:
 
 ```bash
 pip install pillow
