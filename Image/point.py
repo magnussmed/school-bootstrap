@@ -9,7 +9,7 @@ import os
 class Point( object ) :
 	def __init__( self ) :
 		# Set image
-		self.image_id = '1'
+		self.image_id = '2'
 		self.path = 'assets/img/' + self.image_id + '.jpg'
 		self.photo = Image.open( self.path )
 		self.width, self.height = self.photo.size
@@ -23,7 +23,7 @@ class Point( object ) :
 		self.points = []
 
 		# Set sentiment percentage
-		self.senti = 0.50
+		self.senti = 0.25
 
 		# Start middle to top and bottom to middle simultaneously
 		p1Q = mp.Queue()
@@ -86,7 +86,7 @@ class Point( object ) :
 				# Break if the current average color is above image average * sentiment percentage
 				# or if it is under image average * sentiment percentage
 				if int( self.average + (self.senti * self.average) ) > average < int( self.average - (self.senti * self.average) ) :
-					print( "Point found: x: {}, y: {} {}".format( x,y,(r,g,b)) )
+					# print( "Point found: x: {}, y: {} {}".format( x,y,(r,g,b)) )
 					self.points.append( ( x, y ) )
 			else :
 				continue
@@ -113,7 +113,7 @@ class Point( object ) :
 				# Break if the current average color is above image average * sentiment percentage
 				# or if it is under image average * sentiment percentage
 				if int( self.average + (self.senti * self.average) ) > average < int( self.average - (self.senti * self.average) ) :
-					print( "Point found: x: {}, y: {} {}".format( x,y,(r,g,b)) )
+					# print( "Point found: x: {}, y: {} {}".format( x,y,(r,g,b)) )
 					self.points.append( ( x, y ) )
 			else :
 				continue
