@@ -31,10 +31,9 @@ class Calendar( object ) :
 			if diff >= self.duration :
 				bounds = self.realtime( self.firstBound[1], self.secondBound[1] )
 				if b[1] < bounds[1] and d[0] < bounds[0] :
-						t += c[0], a[1]
+					t += c[0], a[1]
 				else :
 					t += a[0], c[1]
-
 		return t
 
 	# Get each part's availability from their current calendar
