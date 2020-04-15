@@ -28,6 +28,9 @@ class Statistics( object ) :
 		deviation = self.standardDeviation( average )
 		print( 'Standard deviation: {}' .format( deviation ) )
 
+		print( '----------------------------------------------------------------' )
+		print( '----------------------------------------------------------------' )
+
 	def getInput( self ) :
 
 		numbers = []
