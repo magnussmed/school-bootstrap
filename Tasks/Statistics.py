@@ -7,8 +7,6 @@ class Statistics( object ) :
 		print( 'Your final input: {} ' .format( self.numbers ) )
 		print( '----------------------------------------------------------------' )
 
-
-
 		# Get the sum
 		sum = self.sum()
 		print( 'Sum: {}' .format( sum ) )
@@ -29,7 +27,6 @@ class Statistics( object ) :
 		# Get the standard deviation
 		deviation = self.standardDeviation( average )
 		print( 'Standard deviation: {}' .format( deviation ) )
-
 
 	def getInput( self ) :
 
